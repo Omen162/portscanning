@@ -1,2 +1,11 @@
 def handler(request, response):
-    return response.json({"message": "Hello Vercel!"})
+    # Parse JSON body safely
+    try:
+        data = request.json()
+    except Exception:
+        data = {}
+
+    return response.json({
+        "message": "Hello from analyze!",
+        "received": data
+    })
